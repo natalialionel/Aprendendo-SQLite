@@ -78,7 +78,7 @@ public class BancoController {
     }
 
 
-    public void alteraRegistro(int id, String titulo, String autor, String editora){
+    public void alteraRegistro(int id, Livro livro  /*String titulo, String autor, String editora*/){
         ContentValues valores;
         String where;
 
@@ -86,10 +86,12 @@ public class BancoController {
 
         where = CriaBanco.ID + "=" + id;
 
+        Log.d("TESTE","BancoController livro "+livro.toString());
+
         valores = new ContentValues();
-        valores.put(CriaBanco.TITULO, titulo);
-        valores.put(CriaBanco.AUTOR, autor);
-        valores.put(CriaBanco.EDITORA, editora);
+        valores.put(CriaBanco.TITULO, /*titulo*/ livro.getTitulo());
+        valores.put(CriaBanco.AUTOR, /*autor*/ livro.getAutor());
+        valores.put(CriaBanco.EDITORA, /*editora*/ livro.getEditora());
 
         db.update(CriaBanco.TABELA,valores,where,null);
         db.close();

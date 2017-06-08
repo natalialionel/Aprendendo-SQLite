@@ -26,6 +26,15 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView lista;
 
+    private EditText titulo;
+    private EditText autor;
+    private EditText editora;
+
+    private String tituloString;
+    private String autorString;
+    private String editoraString;
+    private String resultado;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,22 +42,22 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
         Button botao = (Button)findViewById(R.id.button);
         Button buttonResultado = (Button)findViewById(R.id.buttonVer);
+
+        titulo = (EditText)findViewById(R.id.editText);
+        autor = (EditText)findViewById((R.id.editText2));
+        editora = (EditText)findViewById(R.id.editText3);
 
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 BancoController crud = new BancoController(getBaseContext());
-                EditText titulo = (EditText)findViewById(R.id.editText);
-                EditText autor = (EditText)findViewById((R.id.editText2));
-                EditText editora = (EditText)findViewById(R.id.editText3);
-                String tituloString = titulo.getText().toString();
-                String autorString = autor.getText().toString();
-                String editoraString = editora.getText().toString();
-                String resultado;
+
+                tituloString = titulo.getText().toString();
+                autorString = autor.getText().toString();
+                editoraString = editora.getText().toString();
+                //String resultado;
 
                 Livro livro = new Livro();
 
@@ -62,14 +71,13 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
 
-
-
             }
         });
 
         buttonResultado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("TESTE", "NO botõs resultado");
                 Intent i = new Intent(MainActivity.this, ConsultaActivity.class);
                 startActivity(i);
             }

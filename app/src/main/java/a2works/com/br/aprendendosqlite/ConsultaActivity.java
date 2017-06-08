@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -34,17 +35,23 @@ public class ConsultaActivity extends AppCompatActivity {
         int[] idViews = new int[] {R.id.idLivro, R.id.nomeLivro};
 
         SimpleCursorAdapter adaptador = new SimpleCursorAdapter(getBaseContext(),
-                R.layout.result_grid,cursor,nomeCampos,idViews, 0);
+                        R.layout.result_grid,cursor,nomeCampos,idViews, 0);
+
         lista = (ListView)findViewById(R.id.listView);
         lista.setAdapter(adaptador);
 
+        Log.d("TESTE", "Em consulta ");
 
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Log.d("TESTE", "Em consulta , clicando na lista");
+
                 String codigo;
                 cursor.moveToPosition(position);
                 codigo = cursor.getString(cursor.getColumnIndexOrThrow(CriaBanco.ID));
+
                 Intent intent = new Intent(ConsultaActivity.this, AlterarActivity.class);
                 intent.putExtra("codigo", codigo);
                 startActivity(intent);
