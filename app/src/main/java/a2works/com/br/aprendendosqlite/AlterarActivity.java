@@ -52,15 +52,8 @@ public class AlterarActivity extends AppCompatActivity {
         autor.setText(cursor.getString(cursor.getColumnIndexOrThrow(CriaBanco.AUTOR)));
         editora.setText(cursor.getString(cursor.getColumnIndexOrThrow(CriaBanco.EDITORA)));
 
-        /*livro.setTitulo(cursor.getString(cursor.getColumnIndexOrThrow(CriaBanco.TITULO)));
-        livro.setAutor(cursor.getString(cursor.getColumnIndexOrThrow(CriaBanco.AUTOR)));
-        livro.setEditora(cursor.getString(cursor.getColumnIndexOrThrow(CriaBanco.EDITORA)));*/
 
         Log.d("TESTE","Alterar livro edit"+editLivro.getText().toString() +".");
-
-
-
-        //listar();
 
         alterar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,15 +87,5 @@ public class AlterarActivity extends AppCompatActivity {
         });
     }
 
-    public void listar(){
-
-        editLivro.setText(cursor.getString(cursor.getColumnIndexOrThrow(CriaBanco.TITULO)));
-        autor.setText(cursor.getString(cursor.getColumnIndexOrThrow(CriaBanco.AUTOR)));
-        editora.setText(cursor.getString(cursor.getColumnIndexOrThrow(CriaBanco.EDITORA)));
-
-        cursor = crud.carregaDadoById(Integer.parseInt(codigo));
-
-        Log.d("TESTE","Alterar"+cursor.getCount());
-    }
 
 }
