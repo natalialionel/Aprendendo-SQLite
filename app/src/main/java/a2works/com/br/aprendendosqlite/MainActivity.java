@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
                 tituloString = titulo.getText().toString();
                 autorString = autor.getText().toString();
                 editoraString = editora.getText().toString();
-                //String resultado;
 
                 Livro livro = new Livro();
 
